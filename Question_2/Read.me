@@ -1,0 +1,96 @@
+Create a class structure for a Bank using the following requirements:
+    1. There are 2 kinds of Accounts: Checking and Savings
+    2. Savings accounts have 2 types: Basic and Advanced
+    3. All accounts have the following properties: AccountId, OwnerId, and Balance
+    4. All accounts have the following operations available to them: Deposit, Withdraw, and Transfer
+    5. Transfer operations incur a fee if the amount being transferred is above $100
+    6. Advanced Savings accounts do not incur any fee for Transfer operations
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+Understanding Javascript with C# Access Modifiers
+
+
+class Account {
+  protected int AccountId;
+  protected int OwnerId;
+  protected double balance; 
+  constructor(int accountId, int ownerId, int balance) {
+    this.AccountId = account;
+    this.OwnerId = owner;
+    this.Balance = balance;
+  }
+  protected void Deposit(double amount) {
+      this.balance += amount;
+  }
+  protected bool Withdraw(double amount) {
+      if (amount > this.balance) {
+        print('Operation not allowed.');
+        return false;
+      } else {
+        this.balance -= amount;
+        return true;
+      }
+  }
+  protected bool Transfer(Account transferTo, double amount) {
+      var total = amount;
+      const fee = 10; // example of $10 fee
+      if (amount > 100) {
+          total = amount + this.fee;
+      }
+      if (total > this.balance) {
+        print('Operation not allowed.');
+        return false;
+      } else {
+        this.balance -= total;
+        transferTo.balance += amount;
+        return true;
+      }
+  }
+}
+class InvestmentAccount extends Account {}
+class CheckingAccount extends Account {}
+class BasicSavingsAccount extends SavingsAccount {}
+class AdvancedSavingsAccount extends SavingsAccount {
+    // override transfer method in the sub class
+    // because there is no fee needed
+  public bool Transfer(Account transferTo, double amount) {
+    if (amount > this.balance) {
+        print('Operation not allowed.');
+        return false;
+    } else {
+        this.balance -= amount;
+        transferTo.balance += amount;
+        return true;
+    }
+  }
+}
+
+class IndividualAccount extends InvestmentAccount {
+  //500 withdraw limit
+  protected bool Withdraw(double amount) {
+      if (amount > this.balance && amount >= 500) {
+        print('Operation not allowed.');
+        return false;
+      } else {
+        this.balance -= amount;
+        return true;
+      }
+  }
+}
+class CorporateAccount extends InvestmentAccount {}
